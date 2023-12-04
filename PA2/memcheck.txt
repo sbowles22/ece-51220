@@ -1,0 +1,78 @@
+==127952== Memcheck, a memory error detector
+==127952== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==127952== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==127952== Command: ./pa2 examples/8.txt outputs/8_1.dim outputs/8_1.pck outputs/8_all.dim outputs/8_all.pck
+==127952== Parent PID: 127797
+==127952== 
+--127952-- 
+--127952-- Valgrind options:
+--127952--    --tool=memcheck
+--127952--    --leak-check=full
+--127952--    --track-origins=yes
+--127952--    --verbose
+--127952--    --log-file=memcheck.txt
+--127952-- Contents of /proc/version:
+--127952--   Linux version 3.10.0-1160.99.1.el7.x86_64 (mockbuild@kbuilder.bsys.centos.org) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC) ) #1 SMP Wed Sep 13 14:19:20 UTC 2023
+--127952-- 
+--127952-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand
+--127952-- Page sizes: currently 4096, max supported 4096
+--127952-- Valgrind library directory: /usr/libexec/valgrind
+--127952-- Reading syms from /home/shay/a/bowles7/ECE-51220/PA2/pa2
+--127952-- Reading syms from /usr/lib64/ld-2.17.so
+--127952--   Considering /usr/lib/debug/.build-id/62/c449974331341bb08dcce3859560a22af1e172.debug ..
+--127952--   .. build-id is valid
+--127952-- Reading syms from /usr/libexec/valgrind/memcheck-amd64-linux
+--127952--    object doesn't have a symbol table
+--127952--    object doesn't have a dynamic symbol table
+--127952-- Scheduler: using generic scheduler lock implementation.
+--127952-- Reading suppressions file: /usr/libexec/valgrind/default.supp
+==127952== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-127952-by-bowles7-on-ececomp2.ecn.purdue.edu
+==127952== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-127952-by-bowles7-on-ececomp2.ecn.purdue.edu
+==127952== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-127952-by-bowles7-on-ececomp2.ecn.purdue.edu
+==127952== 
+==127952== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==127952== don't want to do, unless you know exactly what you're doing,
+==127952== or are doing some strange experiment):
+==127952==   /usr/libexec/valgrind/../../bin/vgdb --pid=127952 ...command...
+==127952== 
+==127952== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==127952==   /path/to/gdb ./pa2
+==127952== and then give GDB the following command
+==127952==   target remote | /usr/libexec/valgrind/../../bin/vgdb --pid=127952
+==127952== --pid is optional if only one valgrind process is running
+==127952== 
+--127952-- REDIR: 0x4019e40 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c7ed5 (???)
+--127952-- REDIR: 0x4019c10 (ld-linux-x86-64.so.2:index) redirected to 0x580c7eef (???)
+--127952-- Reading syms from /usr/libexec/valgrind/vgpreload_core-amd64-linux.so
+--127952-- Reading syms from /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so
+==127952== WARNING: new redirection conflicts with existing -- ignoring it
+--127952--     old: 0x04019e40 (strlen              ) R-> (0000.0) 0x580c7ed5 ???
+--127952--     new: 0x04019e40 (strlen              ) R-> (2007.0) 0x04c2d1b0 strlen
+--127952-- REDIR: 0x4019dc0 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c2e300 (strcmp)
+--127952-- REDIR: 0x401aa80 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c31f90 (mempcpy)
+--127952-- Reading syms from /usr/lib64/libm-2.17.so
+--127952--   Considering /usr/lib/debug/.build-id/76/15604eaf4a068dfae5085444d15c0dee93dfbd.debug ..
+--127952--   .. build-id is valid
+--127952-- Reading syms from /usr/lib64/libc-2.17.so
+--127952--   Considering /usr/lib/debug/.build-id/94/70e279388f7f9cb2ed3b2872d0c2095b191ff4.debug ..
+--127952--   .. build-id is valid
+--127952-- REDIR: 0x51c91d0 (libc.so.6:strcasecmp) redirected to 0x4a247a0 (_vgnU_ifunc_wrapper)
+--127952-- REDIR: 0x51c5f40 (libc.so.6:strnlen) redirected to 0x4a247a0 (_vgnU_ifunc_wrapper)
+--127952-- REDIR: 0x51cb4d0 (libc.so.6:strncasecmp) redirected to 0x4a247a0 (_vgnU_ifunc_wrapper)
+--127952-- REDIR: 0x51c89a0 (libc.so.6:memset) redirected to 0x4a247a0 (_vgnU_ifunc_wrapper)
+--127952-- REDIR: 0x51c8950 (libc.so.6:memcpy@GLIBC_2.2.5) redirected to 0x4a247a0 (_vgnU_ifunc_wrapper)
+--127952-- REDIR: 0x51c7930 (libc.so.6:__GI_strrchr) redirected to 0x4c2cb70 (__GI_strrchr)
+--127952-- REDIR: 0x51be740 (libc.so.6:malloc) redirected to 0x4c29eec (malloc)
+--127952-- REDIR: 0x51dea10 (libc.so.6:__GI_strstr) redirected to 0x4c32220 (__strstr_sse2)
+--127952-- REDIR: 0x51beb60 (libc.so.6:free) redirected to 0x4c2afe6 (free)
+--127952-- REDIR: 0x51cf4b0 (libc.so.6:strchrnul) redirected to 0x4c31ab0 (strchrnul)
+--127952-- REDIR: 0x51c8b70 (libc.so.6:__GI_mempcpy) redirected to 0x4c31cc0 (__GI_mempcpy)
+--127952-- REDIR: 0x51cdc30 (libc.so.6:__GI_memcpy) redirected to 0x4c2efb0 (__GI_memcpy)
+==127952== 
+==127952== HEAP SUMMARY:
+==127952==     in use at exit: 0 bytes in 0 blocks
+==127952==   total heap usage: 188 allocs, 188 frees, 6,688 bytes allocated
+==127952== 
+==127952== All heap blocks were freed -- no leaks are possible
+==127952== 
+==127952== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

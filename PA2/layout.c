@@ -106,6 +106,7 @@ int layout_no_choice(Layout* layout) {
 
                             node -> options.olist = malloc(sizeof(Option**));
                             node -> options.olist[0] = option;
+                            node -> options.ops = 1;
                             break;
         case HORIZONTAL:    w = max(node -> left -> options.olist[0] -> w, node -> right -> options.olist[0] -> w);
                             h = (node -> left -> options.olist[0] -> h) + (node -> right -> options.olist[0] -> h);
@@ -118,6 +119,7 @@ int layout_no_choice(Layout* layout) {
 
                             node -> options.olist = malloc(sizeof(Option**));
                             node -> options.olist[0] = option;
+                            node -> options.ops = 1;
                             break;
         default:            break;
         }
@@ -222,12 +224,8 @@ void ol_merge(CTree* node) {
 
     switch (node -> type) {
         case VERTICAL:
-            ol_print(node -> left -> options);
-            printf("\n");
             ol_sort_by_width(node -> left -> options);
             ol_sort_by_width(node -> right -> options);
-            ol_print(node -> left -> options);
-            printf("\n");
         break;
         case HORIZONTAL:
             ol_sort_by_height(node -> left -> options);
@@ -237,7 +235,6 @@ void ol_merge(CTree* node) {
     }
 
     while (lx < left_ops && rx < right_ops) {
-        printf("%d %d\n", lx, rx);
         switch (node -> type) {
             case VERTICAL:
                 w = (left_ol[lx] -> w) + (right_ol[rx] -> w);
@@ -281,8 +278,6 @@ void ol_merge(CTree* node) {
         }
 
         option = option_create(w, h, node);
-
-        printf("%d %d %p\n", w, h, (void*) option);
 
         option -> x = x;
         option -> y = y;

@@ -55,50 +55,36 @@ Option* option_create(int w, int h, CTree* ctnode) {
     return op;
 }
 
-// OptionList* ol_pareto_filter(OptionList* ol) {
-//     if (ol == NULL) {
-//         return NULL;
+// void ol_pareto_filter(OptionList ol) {
+//     ol_sort_by_width(ol);
+
+//     int h_filter = ol.olist[0] -> h;
+
+//     int new_ops = 0;
+//     for (int i = 1; i < ol.ops; i++) {
+
 //     }
-
-//     ol = ol_sort_by_width(ol);
-
-//     int h_filter = ol -> option -> h;
-//     OptionList* p = ol;
-//     OptionList* q = ol -> next;
-//     while (q != NULL) {
-//         if (q -> option -> h >= h_filter) {
-//             ol = ol_destroy_node(ol, p, q);
-//             q = p;
-//         }
-//         if (q -> option -> h < h_filter) {
-//             h_filter = q -> option -> h;
-//         }
-
-//         p = q;
-//         q = q -> next;
-//     }
-
-//     return ol;
 // }
 
 // void qsort(void *base, size_t nitems, size_t size, int (*compar)(const void *, const void*))
 
 int option_cmp_width (const void * a, const void * b) {
-    int wa = ((Option*) a) -> w;
-    int wb = ((Option*) b) -> w;
+    int wa = ((Option**) a)[0] -> w;
+    int wb = ((Option**) b)[0] -> w;
 
-    printf("%p %p\n", a, b);
-    printf("%d - %d: %d\n", wa, wb, wa-wb);
-    return (((Option*) a) -> w) - (((Option*) b) -> w);
+    // printf("%p %p\n", a, b);
+    // printf("%d - %d: %d\n", wa, wb, wa-wb);
+    return wa - wb;
 }
 
 int option_cmp_height (const void * a, const void * b) {
-   return (((Option*) a) -> h) - (((Option*) b) -> h);
+    int ha = ((Option**) a)[0] -> h;
+    int hb = ((Option**) b)[0] -> h;
+    
+    return ha - hb;
 }
 
 void ol_sort_by_width(OptionList ol) {
-    printf("#: %d, %p\n", ol.ops, (void*) ol.olist);
-    printf("w0: %d\n", ol.olist[0] -> w);
     qsort(ol.olist, ol.ops, sizeof(ol.olist[0]), option_cmp_width);
 }
 
