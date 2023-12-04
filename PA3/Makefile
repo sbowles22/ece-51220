@@ -1,8 +1,8 @@
 # Basics
 WARNING = -Wall -Wshadow --pedantic
 ERROR = # -Wvla -Werror
-GCC = gcc -std=c99 -lm $(WARNING) $(ERROR) #  -fopenmp
-OPTIM = -O3
+GCC = gcc -std=c99 $(WARNING) $(ERROR) # -lm #  -fopenmp
+OPTIM =-O3
 VAL = valgrind --tool=memcheck --leak-check=full --verbose
 
 # Dependent on program
@@ -16,7 +16,7 @@ OBJS = $(SRCS:%.c=%.o)
 
 $(EXEC_NAME): $(OBJS)
 	@echo $(OBJS)
-	$(GCC) $(OPTIM) $(TESTFLAGS) $(OBJS) -o $(EXEC_NAME)
+	$(GCC) $(OPTIM) $(TESTFLAGS) $(OBJS) -lm -o $(EXEC_NAME)
 
 .c.o:
 	$(GCC) $(OPTIM) $(TESTFLAGS) -c $*.c

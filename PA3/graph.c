@@ -92,7 +92,7 @@ int g_calc_mcm(Graph* g) {
     int V = g -> V;
     Vertex* vlist = g -> vlist;
 
-    double lk;
+    double lk = INFINITY;
     double* lks = malloc(V * sizeof(double));
     if (lks == NULL) {
         return -1;
@@ -152,7 +152,7 @@ int g_calc_mcm(Graph* g) {
             // printf("EARLY TERM CHANCE @ %d\n", k);
             g_calc_mcm_k(g, dp, lks, k, &lk);
             if (g_pi_holds(g, dp, lks, k, lk)) {
-                printf("EARLY TERM @ %d\n", k);
+                // printf("EARLY TERM @ %d\n", k);
                 g -> min_cycle_mean = lk;
                 free(lks);
                 matrix_destruct((void**) dp, V);
